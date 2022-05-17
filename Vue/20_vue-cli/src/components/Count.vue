@@ -8,15 +8,15 @@
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementOdd">当前求和为奇数再加</button>
-    <button @click="incrementWait">等一等再加</button>
+    <button @click="increment(num)">+</button>
+    <button @click="decrement(num)">-</button>
+    <button @click="incrementOdd(num)">当前求和为奇数再加</button>
+    <button @click="incrementWait(num)">等一等再加</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'CountView',
   data () {
@@ -25,26 +25,31 @@ export default {
     }
   },
   computed: {
-    // 借助mapState生产计算属性，从state中读取数据（对象写法）
+    // 借助mapState生成计算属性，从state中读取数据（对象写法）
     ...mapState({ sum: 'sum', site: 'site', lang: 'lang' }),
-    // 借助mapState生产计算属性，从state中读取数据（数组写法）
-    // ...mapState(['sum', 'site', 'lang']),
-    // 借助mapGetters生产计算属性，从getters中读取数据（数组写法）
+    // 借助mapState生成计算属性，从state中读取数据（数组写法）
+    ...mapState(['sum', 'site', 'lang']),
+    // 借助mapGetters生成计算属性，从getters中读取数据（数组写法）
     ...mapGetters(['bigSum'])
   },
   methods: {
-    increment () {
-      this.$store.commit('increment', this.num)
-    },
-    decrement () {
-      this.$store.commit('decrement', this.num)
-    },
-    incrementOdd () {
-      this.$store.dispatch('incrementOdd', this.num)
-    },
-    incrementWait () {
-      this.$store.dispatch('incrementWait', this.num)
-    }
+    // increment () {
+    //   this.$store.commit('increment', this.num)
+    // },
+    // decrement () {
+    //   this.$store.commit('decrement', this.num)
+    // },
+    // incrementOdd () {
+    //   this.$store.dispatch('incrementOdd', this.num)
+    // },
+    // incrementWait () {
+    //   this.$store.dispatch('incrementWait', this.num)
+    // }
+
+    // 借助mapMutations生成对应的方法，方法中会调用commit去联系mutations
+    ...mapMutations(['increment', 'decrement']),
+    // 借助mapActions生成对应的方法，方法中会调用dispatch去联系actions
+    ...mapActions(['incrementOdd', 'incrementWait'])
   }
 }
 </script>
