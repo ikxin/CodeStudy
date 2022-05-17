@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'SearchView',
   data () {
@@ -27,24 +28,22 @@ export default {
         errorMsg: '',
         userList: []
       })
-      this.$http
-        .get(`https://api.github.com/search/users?q=${this.keyWord}`)
-        .then(
-          (response) => {
-            this.$bus.$emit('updateListData', {
-              isLoading: false,
-              errorMsg: '',
-              userList: response.data.items
-            })
-          },
-          (error) => {
-            this.$bus.$emit('updateListData', {
-              isLoading: false,
-              errorMsg: error,
-              userList: []
-            })
-          }
-        )
+      axios.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
+        (response) => {
+          this.$bus.$emit('updateListData', {
+            isLoading: false,
+            errorMsg: '',
+            userList: response.data.items
+          })
+        },
+        (error) => {
+          this.$bus.$emit('updateListData', {
+            isLoading: false,
+            errorMsg: error,
+            userList: []
+          })
+        }
+      )
     }
   }
 }
