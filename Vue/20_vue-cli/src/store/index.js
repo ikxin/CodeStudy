@@ -36,7 +36,9 @@ const mutations = {
 
 // 准备state（用于存储数据）
 const state = {
-  sum: 0
+  sum: 0,
+  site: '哔哩哔哩',
+  lang: 'Vue'
 }
 
 // 准备getters（用于加工state中的数据）
