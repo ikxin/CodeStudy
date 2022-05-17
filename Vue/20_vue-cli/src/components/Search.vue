@@ -22,12 +22,26 @@ export default {
   },
   methods: {
     searchUsers () {
+      this.$bus.$emit('updateListData', {
+        isFirst: false,
+        isLoading: true,
+        errorMsg: '',
+        userList: []
+      })
       axios.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
         (response) => {
-          this.$bus.$emit('getUsers', response.data.items)
+          this.$bus.$emit('updateListData', {
+            isLoading: false,
+            errorMsg: '',
+            userList: response.data.items
+          })
         },
         (error) => {
-          console.log(error)
+          this.$bus.$emit('updateListData', {
+            isLoading: false,
+            errorMsg: error,
+            userList: []
+          })
         }
       )
     }
