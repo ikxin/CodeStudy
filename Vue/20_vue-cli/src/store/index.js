@@ -31,6 +31,9 @@ const mutations = {
   },
   decrement (state, value) {
     state.sum -= value
+  },
+  addPerson (state, value) {
+    state.personList.unshift(value)
   }
 }
 
@@ -38,7 +41,10 @@ const mutations = {
 const state = {
   sum: 0,
   site: '哔哩哔哩',
-  lang: 'Vue'
+  lang: 'Vue',
+  personList: [
+    { id: '001', name: '张三' }
+  ]
 }
 
 // 准备getters（用于加工state中的数据）
