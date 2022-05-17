@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>当前求和为：{{ sum }}</h2>
+    <h2>当前求和为：{{ $store.state.sum }}</h2>
     <select v-model.number="num">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -18,26 +18,21 @@ export default {
   name: 'CountView',
   data () {
     return {
-      sum: 0,
       num: 1
     }
   },
   methods: {
     increment () {
-      this.sum += this.num
+      this.$store.commit('increment', this.num)
     },
     decrement () {
-      this.sum -= this.num
+      this.$store.commit('decrement', this.num)
     },
     incrementOdd () {
-      if (this.sum % 2) {
-        this.sum += this.num
-      }
+      this.$store.dispatch('incrementOdd', this.num)
     },
     incrementWait () {
-      setTimeout(() => {
-        this.sum += this.num
-      }, 500)
+      this.$store.dispatch('incrementWait', this.num)
     }
   }
 }
