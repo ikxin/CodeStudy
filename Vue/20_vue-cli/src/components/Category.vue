@@ -1,8 +1,10 @@
 <template>
   <div class="category">
     <h2>{{ title }}分类</h2>
-    <!-- 定义一个插槽 -->
-    <slot>默认值</slot>
+    <!-- 默认插槽 -->
+    <slot name="center">默认值</slot>
+    <!-- 具名插槽 -->
+    <slot name="footer">默认值</slot>
   </div>
 </template>
 

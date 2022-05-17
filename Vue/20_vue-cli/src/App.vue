@@ -1,17 +1,21 @@
 <template>
   <div class="container">
     <Category title="美食" :listData="foods">
-      <img src="./assets/logo.png" />
+      <img slot="center" src="./assets/logo.png" />
+      <a slot="footer" href="https://www.ikxin.com">更多美食</a>
     </Category>
     <Category title="游戏">
-      <ul>
+      <ul slot="center">
         <li v-for="(item, index) in games" :key="index">{{ item }}</li>
       </ul>
     </Category>
     <Category title="电影">
-      <ul>
-        <li v-for="(item, index) in films" :key="index">{{ item }}</li>
-      </ul>
+      <!-- 新版具名插槽，只能用于template -->
+      <template v-slot:center>
+        <ul>
+          <li v-for="(item, index) in films" :key="index">{{ item }}</li>
+        </ul>
+      </template>
     </Category>
   </div>
 </template>
