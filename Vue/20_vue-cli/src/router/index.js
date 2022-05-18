@@ -25,8 +25,20 @@ export default new VueRouter({
           children: [
             {
               name: 'Detail',
-              path: 'detail/:id/:title',
-              component: Detail
+              // 声明接收params
+              // path: 'detail/:id/:title',
+              path: 'detail',
+              component: Detail,
+              // 值为对象，直接以props形式传给组件
+              // props: {}
+
+              // 值为布尔值，若值为真，把所有params以props形式传给组件
+              // props: true
+
+              // 值为函数，可以收到$route
+              props ($route) {
+                return { id: $route.query.id, title: $route.query.title }
+              }
             }
           ]
         },
