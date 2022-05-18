@@ -4,6 +4,7 @@ import About from '../pages/About'
 import Home from '../pages/Home'
 import Message from '../pages/Message'
 import News from '../pages/News'
+import Detail from '../pages/Detail'
 
 // 创建一个路由器
 export default new VueRouter({
@@ -18,7 +19,13 @@ export default new VueRouter({
       children: [
         {
           path: 'Message',
-          component: Message
+          component: Message,
+          children: [
+            {
+              path: 'detail',
+              component: Detail
+            }
+          ]
         },
         {
           path: 'news',
