@@ -2,11 +2,24 @@
   <div>
     <ul>
       <li v-for="message in messageList" :key="message.id">
+        <!-- 利用query传递参数 -->
         <!-- <router-link :to="`/home/message/detail?id=${message.id}&title=${message.title}`"> -->
-        <router-link
+        <!-- <router-link
           :to="{
             path: '/home/message/detail',
             query: {
+              id: message.id,
+              title: message.title,
+            },
+          }"
+        > -->
+
+        <!-- 利用params传递参数（不能用path，只能用name来写路径） -->
+        <!-- <router-link :to="`/home/message/detail/${message.id}/${message.title}`"> -->
+        <router-link
+          :to="{
+            name: 'Detail',
+            params: {
               id: message.id,
               title: message.title,
             },
