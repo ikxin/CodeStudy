@@ -11,6 +11,7 @@
           <!-- <a class="list-group-item" href="./home.html">Home</a> -->
           <!-- 路由写法 -->
           <router-link
+            replace
             class="list-group-item"
             active-class="active"
             to="/about"
@@ -18,6 +19,7 @@
             About
           </router-link>
           <router-link
+            :replace="true"
             class="list-group-item"
             active-class="active"
             :to="{
