@@ -10,10 +10,12 @@ import Detail from '../pages/Detail'
 export default new VueRouter({
   routes: [
     {
+      name: 'About',
       path: '/about',
       component: About
     },
     {
+      name: 'Home',
       path: '/home',
       component: Home,
       children: [
@@ -22,6 +24,7 @@ export default new VueRouter({
           component: Message,
           children: [
             {
+              name: 'Detail',
               path: 'detail',
               component: Detail
             }

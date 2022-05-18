@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <Banner/>
+      <Banner />
     </div>
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">
@@ -10,10 +10,20 @@
           <!-- <a class="list-group-item active" href="./about.html">About</a> -->
           <!-- <a class="list-group-item" href="./home.html">Home</a> -->
           <!-- 路由写法 -->
-          <router-link class="list-group-item" active-class="active" to="/about">
+          <router-link
+            class="list-group-item"
+            active-class="active"
+            to="/about"
+          >
             About
           </router-link>
-          <router-link class="list-group-item" active-class="active" to="/home">
+          <router-link
+            class="list-group-item"
+            active-class="active"
+            :to="{
+              name: 'Home',
+            }"
+          >
             Home
           </router-link>
         </div>
