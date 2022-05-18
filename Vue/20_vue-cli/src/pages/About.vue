@@ -4,6 +4,9 @@
 
 <script>
 export default {
-  name: 'AboutView'
+  name: 'AboutView',
+  beforeDestroy () {
+    console.log('组件即将被销毁')
+  }
 }
 </script>
