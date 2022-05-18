@@ -29,9 +29,10 @@ export default {
     // 借助mapState生成计算属性，从state中读取数据（对象写法）
     // ...mapState({ sum: 'sum', site: 'site', lang: 'lang' }),
     // 借助mapState生成计算属性，从state中读取数据（数组写法）
-    ...mapState(['sum', 'site', 'lang', 'personList']),
+    ...mapState('count', ['sum', 'site', 'lang']),
+    ...mapState('person', ['personList']),
     // 借助mapGetters生成计算属性，从getters中读取数据（数组写法）
-    ...mapGetters(['bigSum'])
+    ...mapGetters('count', ['bigSum'])
   },
   methods: {
     // increment () {
@@ -48,9 +49,9 @@ export default {
     // }
 
     // 借助mapMutations生成对应的方法，方法中会调用commit去联系mutations
-    ...mapMutations(['increment', 'decrement']),
+    ...mapMutations('count', ['increment', 'decrement']),
     // 借助mapActions生成对应的方法，方法中会调用dispatch去联系actions
-    ...mapActions(['incrementOdd', 'incrementWait'])
+    ...mapActions('count', ['incrementOdd', 'incrementWait'])
   }
 }
 </script>
