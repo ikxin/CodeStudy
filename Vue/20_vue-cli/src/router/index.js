@@ -12,17 +12,26 @@ const router = new VueRouter({
     {
       name: 'About',
       path: '/about',
-      component: About
+      component: About,
+      meta: {
+        title: '关于'
+      }
     },
     {
       name: 'Home',
       path: '/home',
       component: Home,
+      meta: {
+        title: '主页'
+      },
       children: [
         {
           name: 'Message',
           path: 'message',
           component: Message,
+          meta: {
+            title: '消息'
+          },
           children: [
             {
               name: 'Detail',
@@ -30,6 +39,9 @@ const router = new VueRouter({
               // path: 'detail/:id/:title',
               path: 'detail',
               component: Detail,
+              meta: {
+                title: '详情'
+              },
               // 值为对象，直接以props形式传给组件
               // props: {}
 
@@ -46,7 +58,11 @@ const router = new VueRouter({
         {
           name: 'News',
           path: 'news',
-          component: News
+          component: News,
+          meta: {
+            isAuth: true,
+            title: '新闻'
+          }
         }
       ]
     }
@@ -56,7 +72,7 @@ const router = new VueRouter({
 // 全局前置路由守卫（初始化、路由切换之前被调用）
 router.beforeEach((to, from, next) => {
   // console.log(to, from)
-  if (to.path === '/home/news') {
+  if (to.meta.isAuth) {
     // eslint-disable-next-line no-constant-condition
     if (false) {
       next()
@@ -66,6 +82,12 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+// 全局后置路由守卫（初始化、路由切换之后被调用）
+router.afterEach((to, from) => {
+  // console.log(to, from)
+  document.title = to.meta.title || 'index'
 })
 
 export default router
