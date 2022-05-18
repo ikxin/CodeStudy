@@ -22,7 +22,10 @@
           </router-link>
         </li>
       </ul>
-      <router-view></router-view>
+      <!-- 缓存路由组件（include写组件名） -->
+      <keep-alive :include="['NewsView','MessageView']">
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
