@@ -7,7 +7,7 @@ import News from '../pages/News'
 import Detail from '../pages/Detail'
 
 // 创建一个路由器
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
       name: 'About',
@@ -20,7 +20,8 @@ export default new VueRouter({
       component: Home,
       children: [
         {
-          path: 'Message',
+          name: 'Message',
+          path: 'message',
           component: Message,
           children: [
             {
@@ -43,6 +44,7 @@ export default new VueRouter({
           ]
         },
         {
+          name: 'News',
           path: 'news',
           component: News
         }
@@ -50,3 +52,20 @@ export default new VueRouter({
     }
   ]
 })
+
+// 全局前置路由守卫（初始化、路由切换之前被调用）
+router.beforeEach((to, from, next) => {
+  // console.log(to, from)
+  if (to.path === '/home/news') {
+    // eslint-disable-next-line no-constant-condition
+    if (false) {
+      next()
+    } else {
+      alert('没有权限')
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
