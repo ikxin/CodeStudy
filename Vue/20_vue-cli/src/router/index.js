@@ -8,6 +8,8 @@ import Detail from '../pages/Detail'
 
 // 创建一个路由器
 const router = new VueRouter({
+  // 工作模式
+  mode: 'history',
   routes: [
     {
       name: 'About',
