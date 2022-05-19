@@ -62,6 +62,19 @@ const router = new VueRouter({
           meta: {
             isAuth: true,
             title: '新闻'
+          },
+          // 独享路由守卫
+          beforeEnter: (to, from, next) => {
+            if (to.meta.isAuth) {
+              // eslint-disable-next-line no-constant-condition
+              if (false) {
+                next()
+              } else {
+                alert('没有权限')
+              }
+            } else {
+              next()
+            }
           }
         }
       ]
@@ -69,20 +82,20 @@ const router = new VueRouter({
   ]
 })
 
-// 全局前置路由守卫（初始化、路由切换之前被调用）
-router.beforeEach((to, from, next) => {
-  // console.log(to, from)
-  if (to.meta.isAuth) {
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
-      next()
-    } else {
-      alert('没有权限')
-    }
-  } else {
-    next()
-  }
-})
+// // 全局前置路由守卫（初始化、路由切换之前被调用）
+// router.beforeEach((to, from, next) => {
+//   // console.log(to, from)
+//   if (to.meta.isAuth) {
+//     // eslint-disable-next-line no-constant-condition
+//     if (false) {
+//       next()
+//     } else {
+//       alert('没有权限')
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 // 全局后置路由守卫（初始化、路由切换之后被调用）
 router.afterEach((to, from) => {
