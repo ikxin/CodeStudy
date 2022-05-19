@@ -4,11 +4,13 @@
   <h2>年龄：{{ age }}</h2>
   <h2>工作岗位：{{ job.type }}</h2>
   <h2>工作薪资：{{ job.salary }}</h2>
+  <h2>工作时间：{{ job.time.day }}</h2>
+  <h2>爱好：{{ hobby }}</h2>
   <button @click="changeInfo">更改信息</button>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   name: 'App',
@@ -16,17 +18,23 @@ export default {
     // 数据
     let name = ref('张三')
     let age = ref(18)
-    let job = ref({
+    let job = reactive({
       type: 'Web',
-      salary: "30k"
+      salary: "30k",
+      time: {
+        day: '996'
+      }
     })
+    let hobby = reactive(['吃饭', '睡觉'])
 
     // 方法
     function changeInfo() {
       name.value = '李四'
       age.value = 20
-      job.value.type = 'UI'
-      job.value.salary = '60k'
+      job.type = 'UI'
+      job.salary = '60k'
+      job.time.day = '007'
+      hobby[0] = '打游戏'
     }
 
     // 返回一个对象
@@ -34,6 +42,7 @@ export default {
       name,
       age,
       job,
+      hobby,
       changeInfo
     }
   }
