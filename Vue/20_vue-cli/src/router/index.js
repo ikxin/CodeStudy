@@ -62,20 +62,20 @@ const router = new VueRouter({
           meta: {
             isAuth: true,
             title: '新闻'
-          },
-          // 独享路由守卫
-          beforeEnter: (to, from, next) => {
-            if (to.meta.isAuth) {
-              // eslint-disable-next-line no-constant-condition
-              if (false) {
-                next()
-              } else {
-                alert('没有权限')
-              }
-            } else {
-              next()
-            }
           }
+          // 独享路由守卫
+          // beforeEnter: (to, from, next) => {
+          //   if (to.meta.isAuth) {
+          //     // eslint-disable-next-line no-constant-condition
+          //     if (false) {
+          //       next()
+          //     } else {
+          //       alert('没有权限')
+          //     }
+          //   } else {
+          //     next()
+          //   }
+          // }
         }
       ]
     }
@@ -98,9 +98,9 @@ const router = new VueRouter({
 // })
 
 // 全局后置路由守卫（初始化、路由切换之后被调用）
-router.afterEach((to, from) => {
-  // console.log(to, from)
-  document.title = to.meta.title || 'index'
-})
+// router.afterEach((to, from) => {
+//   // console.log(to, from)
+//   document.title = to.meta.title || 'index'
+// })
 
 export default router

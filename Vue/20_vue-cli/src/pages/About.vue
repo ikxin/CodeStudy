@@ -7,6 +7,16 @@ export default {
   name: 'AboutView',
   beforeDestroy () {
     console.log('组件即将被销毁')
+  },
+  // 通过路由规则，进入该组件时调用
+  beforeRouteEnter (to, from, next) {
+    console.log('#')
+    next()
+  },
+  // 通过路由规则，离开该组件时调用
+  beforeRouteLeave (to, from, next) {
+    console.log('#')
+    next()
   }
 }
 </script>
