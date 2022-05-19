@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 源数据
+        let person = {
+            name: '张三',
+            age: 18
+        }
+
+        // 模拟Vue3中实现响应式
+        const p = new Proxy(person, {
+            get(target, propName) {
+                console.log('读取', propName)
+                return target[propName]
+            },
+            set(target, propName, value) {
+                console.log('修改/新增', propName)
+                target[propName] = value
+            },
+            defineProperty(target, propName) {
+                console.log('删除', propName)
+                return delete target[propName]
+            },
+        })
+    </script>
+</body>
+
+</html>
