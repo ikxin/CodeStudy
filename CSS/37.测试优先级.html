@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            color: red;
+        }
+
+        div {
+            color: green;
+        }
+
+        .box {
+            color: blue;
+        }
+
+        #box {
+            color: pink !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 继承 < 通配符选择器 < 标签选择器 < 类选择器 < id选择器 < 行内样式 < !important -->
+    <div class="box" id="box" style="color: orange;">测试优先级</div>
+</body>
+
+</html>
