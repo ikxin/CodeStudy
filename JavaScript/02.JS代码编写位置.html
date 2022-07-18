@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 可以将js代码写到script标签中 -->
+    <script>
+      console.log("Hello World");
+    </script>
+
+    <!-- 可以将js代码写到外部js文件中 -->
+    <script src="./js/script.js">
+      // 外部链接的内部代码不执行
+      console.log('Hello World');
+    </script>
+  </head>
+  <body>
+    <!-- 可以将js代码写到标签的onclick属性中 -->
+    <button onclick="alert('点击测试');">点击测试</button>
+
+    <!-- 可以将js代码写到超链接的href属性中 -->
+    <a href="javascript:alert('点击测试');">点击测试</a>
+
+    <!-- 虽然可以写在标签的属性中，但是它们属于结构与行为耦合，不方便维护 -->
+  </body>
+</html>
