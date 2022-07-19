@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 转换为布尔值
+      // 数值：除了 0 和 NaN 其余的都是 true
+      // 字符串：除了空字符串 其余的都是 true
+      // null 和 undefined 都是 false
+      // Object 对象也会转换为 true
+
+      console.log(typeof Boolean(123), Boolean(123));
+      console.log(typeof Boolean(Infinity), Boolean(Infinity));
+      console.log(typeof Boolean("null"), Boolean("null"));
+      console.log(typeof Boolean(" "), Boolean(" "));
+
+      console.log(typeof Boolean(""), Boolean(""));
+      console.log(typeof Boolean(NaN), Boolean(NaN));
+      console.log(typeof Boolean(0), Boolean(0));
+      console.log(typeof Boolean(null), Boolean(null));
+      console.log(typeof Boolean(undefined), Boolean(undefined));
+    </script>
+  </head>
+  <body></body>
+</html>
