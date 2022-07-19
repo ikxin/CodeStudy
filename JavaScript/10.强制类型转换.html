@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 类型转换
+
+      // 方法一：调用 toString 方法
+      // toString 方法不修改原变量，将转换结果返回
+      // null 和 undefined 没有 toString 方法
+      var num = 123;
+      console.log(typeof num.toString(), num.toString());
+
+      // 方法二：调用 String 函数
+      // 支持 null 和 undefined
+      var str = null;
+      console.log(typeof String(str), String(str));
+      console.log(typeof String(undefined), String(undefined));
+
+      // 方法三：调用 Number 函数
+      console.log(typeof Number("123"), Number("123"));
+      console.log(typeof Number("abc"), Number("abc"));
+      console.log(typeof Number(""), Number(""));
+      console.log(typeof Number(null), Number(null));
+      console.log(typeof Number(undefined), Number(undefined));
+      console.log(typeof Number(true), Number(true));
+      console.log(typeof Number(false), Number(false));
+
+      // 方法四： parseInt() 和 parseFloat()
+      // 对非 String 使用会先转换为 String 在执行
+      console.log(typeof parseInt("100px"), parseInt("100px"));
+      console.log(typeof parseFloat("100.2px"), parseFloat("100.2px"));
+    </script>
+  </head>
+  <body></body>
+</html>
